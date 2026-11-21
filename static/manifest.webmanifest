@@ -1,0 +1,21 @@
+{
+  "id": "/",
+  "name": "ELCICA POS - Offline Edition",
+  "short_name": "ELCICA POS",
+  "description": "Aplikasi kasir offline ELCICA",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1120",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
