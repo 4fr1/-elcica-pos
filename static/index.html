@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="ELCICA POS - Offline Point of Sale">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>ELCICA POS</title>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark">E</span>
+            <div>
+                <strong>ELCICA POS</strong>
+                <small>Offline Edition</small>
+            </div>
+        </div>
+        <div id="connection-status" class="status">
+            <span class="status-dot"></span>
+            <span>Memeriksa koneksi...</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">POINT OF SALE</p>
+                <h1>Kasir</h1>
+                <p class="muted">Kelola penjualan toko dengan mudah.</p>
+            </div>
+            <div class="date" id="today"></div>
+        </section>
+
+        <section class="workspace">
+            <div class="products-panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Produk</h2>
+                        <p class="muted">Pilih produk untuk transaksi</p>
+                    </div>
+                    <span class="count" id="product-count">0 produk</span>
+                </div>
+
+                <input
+                    type="search"
+                    id="product-search"
+                    placeholder="Cari nama produk..."
+                    autocomplete="off"
+                >
+
+                <div id="product-list" class="product-grid">
+                    <p class="muted">Memuat produk...</p>
+                </div>
+            </div>
+
+            <aside class="cart-panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Keranjang</h2>
+                        <p class="muted">Daftar belanja</p>
+                    </div>
+                    <span class="count" id="cart-count">0 item</span>
+                </div>
+
+                <div id="cart-list" class="cart-list">
+                    <p class="empty">Keranjang masih kosong</p>
+                </div>
+
+                <div class="summary">
+                    <div>
+                        <span>Subtotal</span>
+                        <strong id="subtotal">Rp0</strong>
+                    </div>
+                    <div class="total">
+                        <span>Total</span>
+                        <strong id="total">Rp0</strong>
+                    </div>
+
+                    <label for="cash">Uang diterima</label>
+                    <input
+                        type="number"
+                        id="cash"
+                        min="0"
+                        inputmode="numeric"
+                        placeholder="Masukkan pembayaran"
+                    >
+
+                    <div class="change">
+                        <span>Kembalian</span>
+                        <strong id="change">Rp0</strong>
+                    </div>
+
+                    <button id="checkout" class="checkout-btn" disabled>
+                        Proses Pembayaran
+                    </button>
+                </div>
+            </aside>
+        </section>
+
+        <section class="history-panel">
+            <h2>Transaksi Terakhir</h2>
+            <div id="transaction-list">
+                <p class="muted">Belum ada transaksi.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        ELCICA POS · Offline Edition · <span id="year"></span>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>
