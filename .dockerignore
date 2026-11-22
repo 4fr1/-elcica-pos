@@ -1,0 +1,12 @@
+.git
+.github
+src
+target
+build
+Cargo.toml
+Cargo.lock
+wrangler.toml
+.env
+.env.*
+*.md
+*.log
