@@ -200,14 +200,32 @@ input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-so
     font-size: 13px;
 }
 
-.cart-item button {
-    width: 26px;
-    height: 26px;
+.cart-remove {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    flex: none;
     border: 1px solid rgba(255, 138, 138, .25);
     border-radius: 9px;
     background: transparent;
     color: var(--red);
     cursor: pointer;
+    transition: background .2s, border-color .2s, transform .2s;
+}
+.cart-remove:hover {
+    background: rgba(255, 138, 138, .12);
+    border-color: var(--red);
+    transform: scale(1.05);
+}
+.cart-remove svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .summary { margin-top: 18px; }

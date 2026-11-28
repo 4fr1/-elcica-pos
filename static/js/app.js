@@ -207,7 +207,11 @@ function renderCart() {
             `${item.name} × ${item.quantity} · ${rupiah(item.price * item.quantity)}`;
 
         const remove = document.createElement("button");
-        remove.textContent = "Hapus";
+        remove.className = "cart-remove";
+        remove.type = "button";
+        remove.title = "Hapus dari keranjang";
+        remove.setAttribute("aria-label", `Hapus ${item.name} dari keranjang`);
+        remove.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/></svg>';
         remove.addEventListener("click", () => removeFromCart(item.productId));
 
         row.append(description, remove);

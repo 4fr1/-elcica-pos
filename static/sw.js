@@ -1,4 +1,4 @@
-const CACHE_NAME = "elcica-pos-v3";
+const CACHE_NAME = "elcica-pos-v4";
 
 const APP_FILES = [
     "/",
