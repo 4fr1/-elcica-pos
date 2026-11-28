@@ -2,116 +2,187 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#111827">
-    <meta name="description" content="ELCICA POS - Offline Point of Sale">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#0a1310">
+    <meta name="description" content="Dashboard ELCICA POS — ringkasan toko, kasir, dan laporan offline.">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="stylesheet" href="/css/app.css">
-    <title>ELCICA POS</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>Dashboard | ELCICA POS</title>
 </head>
-<body>
-    <header class="topbar">
-        <div class="brand">
-            <span class="brand-mark">E</span>
+<body class="dashboard-page">
+
+<svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.7a2 2 0 002-1.6L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20 12l-8 8-8-8V4h8l8 8z"/><circle cx="8.5" cy="8.5" r="1.2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V8"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v11H3z"/><path d="M14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z"/><path d="M12 9v5M12 18h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+</svg>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <div class="profile">
+            <div class="avatar avatar-lg">E</div>
             <div>
-                <strong>ELCICA POS</strong>
-                <small>Offline Edition</small>
+                <strong id="account-name">Tamu</strong>
+                <span id="account-email">Belum login</span>
+                <small id="account-role">AKUN LOKAL</small>
             </div>
         </div>
-        <div id="connection-status" class="status">
-            <span class="status-dot"></span>
-            <span>Memeriksa koneksi...</span>
+        <button class="icon-btn close-btn" id="close-btn" aria-label="Tutup menu">
+            <svg class="icon"><use href="#i-close"/></svg>
+        </button>
+    </div>
+
+    <p class="nav-label">MENU UTAMA</p>
+    <nav class="nav">
+        <a class="nav-link active" href="/"><span class="nav-icon"><svg class="icon"><use href="#i-grid"/></svg></span>Dashboard<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+        <a class="nav-link" href="/kasir.html"><span class="nav-icon"><svg class="icon"><use href="#i-cart"/></svg></span>Kasir<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+        <a class="nav-link" href="#produk"><span class="nav-icon"><svg class="icon"><use href="#i-box"/></svg></span>Produk<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+        <a class="nav-link" href="#laporan"><span class="nav-icon"><svg class="icon"><use href="#i-chart"/></svg></span>Laporan<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+    </nav>
+
+    <p class="nav-label">LAINNYA</p>
+    <nav class="nav">
+        <button class="nav-link" data-soon="Kategori"><span class="nav-icon"><svg class="icon"><use href="#i-tag"/></svg></span>Kategori<i class="chev">segera</i></button>
+        <button class="nav-link" data-soon="Pembelian"><span class="nav-icon"><svg class="icon"><use href="#i-truck"/></svg></span>Pembelian<i class="chev">segera</i></button>
+        <a class="nav-link" href="https://auth.elcica.xyz/admin"><span class="nav-icon"><svg class="icon"><use href="#i-user"/></svg></span>Akun ELCICA<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+    </nav>
+
+    <div class="sidebar-foot">
+        <span class="status" id="connection-status"><i class="status-dot"></i><span>Memeriksa koneksi...</span></span>
+        <small>ELCICA POS · Offline Edition</small>
+    </div>
+</aside>
+
+<header class="header">
+    <div class="header-inner">
+        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu">
+            <svg class="icon"><use href="#i-menu"/></svg>
+        </button>
+        <div class="logo-small">
+            <div class="avatar">E</div>
+            <div><strong>ELCICA POS</strong><span>Dashboard Toko</span></div>
         </div>
-    </header>
+        <button class="chip" id="account-chip" data-account><span class="chip-dot"></span>Belum login</button>
+    </div>
+</header>
 
-    <main class="container">
-        <section class="welcome">
-            <div>
-                <p class="eyebrow">POINT OF SALE</p>
-                <h1>Kasir</h1>
-                <p class="muted">Kelola penjualan toko dengan mudah.</p>
+<main class="main-container">
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">RINGKASAN TOKO</p>
+            <h1>Selamat berjualan,<br><span id="greeting-name">Tamu</span></h1>
+            <p class="muted" id="today">—</p>
+            <a class="btn-primary" href="/kasir.html">Buka Kasir <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+            <div class="orb"></div>
+            <div class="mini-card">
+                <span>Penjualan hari ini</span>
+                <strong id="hero-sales">Rp0</strong>
             </div>
-            <div class="date" id="today"></div>
+        </div>
+    </section>
+
+    <section class="stats" aria-label="Statistik hari ini">
+        <article class="stat-card accent">
+            <span class="stat-icon"><svg class="icon"><use href="#i-chart"/></svg></span>
+            <span class="stat-label">Penjualan hari ini</span>
+            <strong id="stat-sales">Rp0</strong>
+            <small>dari transaksi tersimpan</small>
+        </article>
+        <article class="stat-card">
+            <span class="stat-icon"><svg class="icon"><use href="#i-cart"/></svg></span>
+            <span class="stat-label">Transaksi hari ini</span>
+            <strong id="stat-orders">0</strong>
+            <small>total transaksi hari ini</small>
+        </article>
+        <article class="stat-card">
+            <span class="stat-icon"><svg class="icon"><use href="#i-box"/></svg></span>
+            <span class="stat-label">Total produk</span>
+            <strong id="stat-products">0</strong>
+            <small>tersimpan di perangkat</small>
+        </article>
+        <article class="stat-card warn">
+            <span class="stat-icon"><svg class="icon"><use href="#i-alert"/></svg></span>
+            <span class="stat-label">Stok menipis</span>
+            <strong id="stat-low">0</strong>
+            <small>stok ≤ 5, segera restock</small>
+        </article>
+    </section>
+
+    <section class="block">
+        <div class="block-head">
+            <div><h2>Akses cepat</h2><p class="muted">Semua kebutuhan toko dalam satu tempat</p></div>
+        </div>
+        <div class="actions">
+            <a class="action-card primary" href="/kasir.html">
+                <span class="action-icon"><svg class="icon"><use href="#i-cart"/></svg></span>
+                <strong>Kasir</strong><small>Transaksi & pembayaran</small>
+            </a>
+            <a class="action-card" href="#produk">
+                <span class="action-icon"><svg class="icon"><use href="#i-box"/></svg></span>
+                <strong>Produk</strong><small>Daftar & stok barang</small>
+            </a>
+            <button class="action-card" data-soon="Kategori">
+                <span class="action-icon"><svg class="icon"><use href="#i-tag"/></svg></span>
+                <strong>Kategori</strong><small>Grup produk</small><em>segera</em>
+            </button>
+            <a class="action-card" href="#laporan">
+                <span class="action-icon"><svg class="icon"><use href="#i-chart"/></svg></span>
+                <strong>Laporan</strong><small>Penjualan 7 hari</small>
+            </a>
+            <button class="action-card" data-soon="Pembelian">
+                <span class="action-icon"><svg class="icon"><use href="#i-truck"/></svg></span>
+                <strong>Pembelian</strong><small>Restock & supplier</small><em>segera</em>
+            </button>
+            <a class="action-card" href="https://auth.elcica.xyz/admin">
+                <span class="action-icon"><svg class="icon"><use href="#i-user"/></svg></span>
+                <strong>Akun</strong><small>Profil & langganan</small>
+            </a>
+        </div>
+    </section>
+
+    <div class="two-col">
+        <section class="block panel" id="laporan">
+            <div class="block-head">
+                <div><h2>Laporan penjualan</h2><p class="muted">7 hari terakhir · data lokal</p></div>
+                <span class="badge" id="chart-total">Rp0</span>
+            </div>
+            <div class="chart" id="chart"></div>
         </section>
 
-        <section class="workspace">
-            <div class="products-panel">
-                <div class="section-heading">
-                    <div>
-                        <h2>Produk</h2>
-                        <p class="muted">Pilih produk untuk transaksi</p>
-                    </div>
-                    <span class="count" id="product-count">0 produk</span>
-                </div>
-
-                <input
-                    type="search"
-                    id="product-search"
-                    placeholder="Cari nama produk..."
-                    autocomplete="off"
-                >
-
-                <div id="product-list" class="product-grid">
-                    <p class="muted">Memuat produk...</p>
-                </div>
+        <section class="block panel">
+            <div class="block-head">
+                <div><h2>Transaksi terakhir</h2><p class="muted">5 transaksi terbaru</p></div>
             </div>
-
-            <aside class="cart-panel">
-                <div class="section-heading">
-                    <div>
-                        <h2>Keranjang</h2>
-                        <p class="muted">Daftar belanja</p>
-                    </div>
-                    <span class="count" id="cart-count">0 item</span>
-                </div>
-
-                <div id="cart-list" class="cart-list">
-                    <p class="empty">Keranjang masih kosong</p>
-                </div>
-
-                <div class="summary">
-                    <div>
-                        <span>Subtotal</span>
-                        <strong id="subtotal">Rp0</strong>
-                    </div>
-                    <div class="total">
-                        <span>Total</span>
-                        <strong id="total">Rp0</strong>
-                    </div>
-
-                    <label for="cash">Uang diterima</label>
-                    <input
-                        type="number"
-                        id="cash"
-                        min="0"
-                        inputmode="numeric"
-                        placeholder="Masukkan pembayaran"
-                    >
-
-                    <div class="change">
-                        <span>Kembalian</span>
-                        <strong id="change">Rp0</strong>
-                    </div>
-
-                    <button id="checkout" class="checkout-btn" disabled>
-                        Proses Pembayaran
-                    </button>
-                </div>
-            </aside>
+            <div class="list" id="recent-transactions"></div>
         </section>
+    </div>
 
-        <section class="history-panel">
-            <h2>Transaksi Terakhir</h2>
-            <div id="transaction-list">
-                <p class="muted">Belum ada transaksi.</p>
-            </div>
-        </section>
-    </main>
+    <section class="block panel" id="produk">
+        <div class="block-head">
+            <div><h2>Produk terbaru</h2><p class="muted">Stok tersimpan di perangkat ini</p></div>
+            <a class="link" href="/kasir.html">Ke kasir <svg class="icon"><use href="#i-chevron"/></svg></a>
+        </div>
+        <div class="product-list" id="recent-products"></div>
+    </section>
+</main>
 
-    <footer>
-        ELCICA POS · Offline Edition · <span id="year"></span>
-    </footer>
+<footer>ELCICA POS · Dashboard offline · <span id="year"></span></footer>
+<div class="toast" id="toast" role="status"></div>
 
-    <script src="/js/app.js" defer></script>
+<script src="/js/dashboard.js" defer></script>
 </body>
 </html>
