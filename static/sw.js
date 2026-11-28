@@ -1,11 +1,14 @@
-const CACHE_NAME = "elcica-pos-v1";
+const CACHE_NAME = "elcica-pos-v2";
 
 const APP_FILES = [
     "/",
     "/index.html",
+    "/kasir.html",
     "/manifest.webmanifest",
     "/css/app.css",
+    "/css/dashboard.css",
     "/js/app.js",
+    "/js/dashboard.js",
     "/icons/icon.svg"
 ];
 
