@@ -3,7 +3,7 @@ const CACHE_NAME = "elcica-pos-v2";
 const APP_FILES = [
     "/",
     "/index.html",
-    "/kasir.html",
+    "/kasir",
     "/manifest.webmanifest",
     "/css/app.css",
     "/css/dashboard.css",
