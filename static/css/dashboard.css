@@ -360,6 +360,7 @@ body.menu-open .sidebar { transform: translateX(0); }
 .chart-bar { width: 100%; max-width: 42px; min-height: 4px; border-radius: 8px 8px 4px 4px; background: linear-gradient(180deg, var(--accent), rgba(124, 255, 155, .18)); transition: height .4s; }
 .chart-col span { color: var(--muted); font-size: 10px; }
 .chart-col.today span { color: var(--accent); font-weight: 700; }
+.note { margin: 14px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
 .list { display: grid; gap: 2px; }
 .list-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
