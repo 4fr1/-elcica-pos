@@ -48,7 +48,7 @@
     <nav class="nav">
         <a class="nav-link active" href="/"><span class="nav-icon"><svg class="icon"><use href="#i-grid"/></svg></span>Dashboard<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
         <a class="nav-link" href="/kasir"><span class="nav-icon"><svg class="icon"><use href="#i-cart"/></svg></span>Kasir<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
-        <a class="nav-link" href="#produk"><span class="nav-icon"><svg class="icon"><use href="#i-box"/></svg></span>Produk<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
+        <button class="nav-link" data-soon="Manajemen produk"><span class="nav-icon"><svg class="icon"><use href="#i-box"/></svg></span>Produk<i class="chev">segera</i></button>
         <a class="nav-link" href="#laporan"><span class="nav-icon"><svg class="icon"><use href="#i-chart"/></svg></span>Laporan<i class="chev"><svg class="icon"><use href="#i-chevron"/></svg></i></a>
     </nav>
 
@@ -100,19 +100,19 @@
             <span class="stat-icon"><svg class="icon"><use href="#i-chart"/></svg></span>
             <span class="stat-label">Penjualan hari ini</span>
             <strong id="stat-sales">Rp0</strong>
-            <small>dari transaksi tersimpan</small>
+            <small>di perangkat ini saja</small>
         </article>
         <article class="stat-card">
             <span class="stat-icon"><svg class="icon"><use href="#i-cart"/></svg></span>
             <span class="stat-label">Transaksi hari ini</span>
             <strong id="stat-orders">0</strong>
-            <small>total transaksi hari ini</small>
+            <small>di perangkat ini saja</small>
         </article>
         <article class="stat-card">
             <span class="stat-icon"><svg class="icon"><use href="#i-box"/></svg></span>
             <span class="stat-label">Total produk</span>
             <strong id="stat-products">0</strong>
-            <small>tersimpan di perangkat</small>
+            <small>di perangkat ini saja</small>
         </article>
         <article class="stat-card warn">
             <span class="stat-icon"><svg class="icon"><use href="#i-alert"/></svg></span>
@@ -131,10 +131,10 @@
                 <span class="action-icon"><svg class="icon"><use href="#i-cart"/></svg></span>
                 <strong>Kasir</strong><small>Transaksi & pembayaran</small>
             </a>
-            <a class="action-card" href="#produk">
+            <button class="action-card" data-soon="Manajemen produk">
                 <span class="action-icon"><svg class="icon"><use href="#i-box"/></svg></span>
-                <strong>Produk</strong><small>Daftar & stok barang</small>
-            </a>
+                <strong>Produk</strong><small>CRUD & stok barang</small><em>segera</em>
+            </button>
             <button class="action-card" data-soon="Kategori">
                 <span class="action-icon"><svg class="icon"><use href="#i-tag"/></svg></span>
                 <strong>Kategori</strong><small>Grup produk</small><em>segera</em>
@@ -157,10 +157,11 @@
     <div class="two-col">
         <section class="block panel" id="laporan">
             <div class="block-head">
-                <div><h2>Laporan penjualan</h2><p class="muted">7 hari terakhir · data lokal</p></div>
+                <div><h2>Laporan penjualan</h2><p class="muted">7 hari terakhir · perangkat ini saja</p></div>
                 <span class="badge" id="chart-total">Rp0</span>
             </div>
             <div class="chart" id="chart"></div>
+            <p class="note">Transaksi dari HP/browser lain belum ikut terhitung. Data tersimpan di perangkat masing-masing.</p>
         </section>
 
         <section class="block panel">

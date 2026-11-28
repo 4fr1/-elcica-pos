@@ -1,4 +1,4 @@
-const CACHE_NAME = "elcica-pos-v2";
+const CACHE_NAME = "elcica-pos-v3";
 
 const APP_FILES = [
     "/",
@@ -53,13 +53,14 @@ self.addEventListener("fetch", (event) => {
                     if (response.ok) {
                         const copy = response.clone();
                         caches.open(CACHE_NAME).then((cache) =>
-                            cache.put("/index.html", copy)
+                            cache.put(request, copy)
                         );
                     }
                     return response;
                 })
                 .catch(async () => {
-                    return await caches.match("/index.html") ||
+                    return await caches.match(request) ||
+                        await caches.match("/index.html") ||
                         new Response("Aplikasi belum tersedia offline.", {
                             status: 503,
                             headers: { "Content-Type": "text/plain; charset=utf-8" }
